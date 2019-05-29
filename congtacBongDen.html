@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Phát triển chương trình thể hiện sự tương tác giữa hai đối tượng: công tắc và bóng đèn</title>
+</head>
+
+<body>
+    <input type="submit" id="onoff" value="Bật/Tắt" onclick="Onoff()">
+    <input type="submit" id="noiday" value="Nối dây cắm" onclick="Noiday()">
+    <script>
+        function Lamp(status, day) {
+            this.status = status;
+            this.day = day;
+            this.noidaystatus = function() {
+                return this.day;
+            }
+            this.daystatus = function() {
+                if (this.day) {
+                    alert("Thông báo: Đã cắm dây");
+                } else {
+                    alert("Thông báo: Đã rút dây");
+                }
+            }
+            this.setday = function() {
+                if (this.day) {
+                    this.day = false;
+                } else {
+                    this.day = true;
+                }
+            }
+            this.statuslamp = function() {
+                if (this.status) {
+                    document.write("Thông báo: Đèn bật");
+                } else {
+                    document.write("Thông báo: Đèn tắt");
+                }
+            }
+            this.changestatus = function() {
+                if (this.status) {
+                    this.status = false;
+                } else {
+                    this.status = true;
+                }
+            }
+        }
+        var lamp = new Lamp(false, false);
+
+        function Noiday() {
+            lamp.setday();
+            lamp.daystatus();
+        }
+
+        function Onoff() {
+            if (lamp.noidaystatus()) {
+                lamp.changestatus();
+                lamp.statuslamp();
+            } else {
+                lamp.daystatus();
+            }
+        }
+    </script>
+</body>
+
+</html>
